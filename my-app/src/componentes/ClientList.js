@@ -19,7 +19,7 @@ const ClientList = () => {
     phone: '',
     location: ''
   });
-
+   
   useEffect(() => {
     fetchClients(currentPage);
   }, [currentPage]);
