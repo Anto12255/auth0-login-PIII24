@@ -7,13 +7,14 @@ const { Content } = Layout;
 const ClientCreate = () => {
   const onFinish = async (values) => {
     try {
-      await axios.post('https://backend-login-logout-crud-p3.vercel.app/api/clients', values);
+      await axios.post('http://localhost:5000/api/clients', values);
       message.success('Cliente creado con éxito');
     } catch (error) {
       message.error('Error al crear el cliente');
     }
   };
 
+ 
   return (
     <Layout>
       <Content style={{ padding: '50px' }}>

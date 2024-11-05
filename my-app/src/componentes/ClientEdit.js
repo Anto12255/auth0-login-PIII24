@@ -5,7 +5,7 @@ import axios from 'axios';
 
 const { Content } = Layout;
 
-const ClientEdit = () => { // Cambia la exportación
+const ClientEdit = () => {
   const [client, setClient] = useState(null);
   const [loading, setLoading] = useState(true);
   const { id } = useParams();
@@ -14,7 +14,7 @@ const ClientEdit = () => { // Cambia la exportación
   useEffect(() => {
     const fetchClient = async () => {
       try {
-        const response = await axios.get(`https://backend-login-logout-crud-p3.vercel.app/api/clients/${id}`);
+        const response = await axios.get(`http://localhost:5000/api/clients/${id}`);
         setClient(response.data);
         setLoading(false);
       } catch (error) {
@@ -27,9 +27,9 @@ const ClientEdit = () => { // Cambia la exportación
 
   const onFinish = async (values) => {
     try {
-      await axios.put(`https://backend-login-logout-crud-p3.vercel.app/api/clients/${id}`, values);
+      await axios.put(`http://localhost:5000/api/clients/${id}`, values);
       message.success('Cliente actualizado con éxito');
-      navigate('/client');
+      navigate('/clients');
     } catch (error) {
       message.error('Error al actualizar el cliente');
     }
@@ -41,10 +41,17 @@ const ClientEdit = () => { // Cambia la exportación
         {loading ? (
           <p>Cargando...</p>
         ) : (
-          <Form onFinish={onFinish} initialValues={client} layout="vertical">
+          <Form onFinish={onFinish} initialValues={client || {}} layout="vertical">
             <Form.Item label="Nombre" name="name" rules={[{ required: true, message: 'Ingrese el nombre' }]}>
               <Input placeholder="Nombre del cliente" />
             </Form.Item>
+            <Form.Item label="Email" name="email" rules={[{ required: true, message: 'Ingrese el email' }]}>
+              <Input placeholder="Email del cliente" />
+            </Form.Item>
+            <Form.Item label="Teléfono" name="phone">
+              <Input placeholder="Teléfono del cliente" />
+            </Form.Item>
+            {/* Agrega más campos según sea necesario */}
             <Form.Item>
               <Button type="primary" htmlType="submit">Actualizar Cliente</Button>
             </Form.Item>
@@ -55,4 +62,4 @@ const ClientEdit = () => { // Cambia la exportación
   );
 };
 
-export default ClientEdit; // Cambia a exportación por defecto
+export default ClientEdit;

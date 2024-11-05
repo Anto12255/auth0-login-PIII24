@@ -1,19 +1,23 @@
-// index.js o App.js
+
+import "antd/dist/reset.css";
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client'; // Importa desde react-dom/client
 import { Auth0Provider } from "@auth0/auth0-react";
 import App from './App';
 
-const domain = "TU_DOMINIO_DE_AUTH0"; // Reemplaza con tu dominio de Auth0
-const clientId = "TU_CLIENT_ID"; // Reemplaza con tu Client ID
+const domain = "dev-gspvq4pogtwmnrlo.us.auth0.com"; // Reemplaza con tu dominio de Auth0
+const clientId = "mUi9tbfGoawMn6gIa0DyO213Zn65Zu0j"; // Reemplaza con tu Client ID
 
-ReactDOM.render(
+// Cambia ReactDOM.render por createRoot
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
   <Auth0Provider
     domain={domain}
     clientId={clientId}
-    redirectUri={window.location.origin}
+    authorizationParams={{
+      redirect_uri: window.location.origin
+    }}
   >
     <App />
-  </Auth0Provider>,
-  document.getElementById('root')
+  </Auth0Provider>
 );

@@ -1,20 +1,21 @@
-// src/components/Profile.js
+// src/componentes/Profile.js
 import React from 'react';
-import { useAuth0 } from "@auth0/auth0-react";
+import { useAuth0 } from '@auth0/auth0-react';
+import { Avatar } from 'antd';
 
-function Profile() {
-  const { user, isAuthenticated, isLoading } = useAuth0();
-
-  if (isLoading) return <div>Cargando...</div>;
-  if (!isAuthenticated) return null;
+const Profile = () => {
+  const { user } = useAuth0();
 
   return (
     <div>
-      <img src={user.picture} alt={user.name} />
-      <h2>{user.name}</h2>
-      <p>{user.email}</p>
+      {user && ( // Comprobar si hay un usuario autenticado
+        <>
+          <Avatar src={user.picture} alt={user.name} style={{ size: 'small' }} />
+          <span>{user.name}</span>
+        </>
+      )}
     </div>
   );
-}
+};
 
 export default Profile;
