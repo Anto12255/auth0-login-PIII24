@@ -2,29 +2,14 @@
     "version": 2,
     "builds": [
       {
-        "src": "client/package.json",
-        "use": "@vercel/react"
-      },
-      {
-        "src": "server/index.js",
+        "src": "index.js",
         "use": "@vercel/node"
       }
     ],
     "routes": [
       {
-        "src": "/api/clients",
-        "dest": "/server/api/clients.js"
-      },
-      {
-        "src": "/api/clients/(.*)",
-        "dest": "/server/api/clients/$1"
-      },
-      {
         "src": "/(.*)",
-        "dest": "/client/$1"
+        "dest": "/index.js"
       }
-    ],
-    "env": {
-      "API_URL": "https://your-api-url.vercel.app/api"
-    }
+    ]
   }
