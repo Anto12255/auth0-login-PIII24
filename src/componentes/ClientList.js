@@ -26,7 +26,7 @@ const ClientList = () => {
 
   const fetchClients = async (page) => {
     try {
-      const response = await axios.get(`http://localhost:5000/api/clients?page=${page}`);
+      const response = await axios.get(`http://localhost:5001/api/clients?page=${page}`);
       setClients(response.data.clients);
       setTotalClients(response.data.total);
       setLoading(false);
@@ -38,7 +38,7 @@ const ClientList = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/api/clients/${id}`);
+      await axios.delete(`http://localhost:5001/api/clients/${id}`);
       message.success('Cliente eliminado con éxito');
       fetchClients(currentPage);
     } catch (error) {
@@ -48,7 +48,7 @@ const ClientList = () => {
 
   const handleCreate = async () => {
     try {
-      await axios.post('http://localhost:5000/api/clients', newClient);
+      await axios.post('http://localhost:5001/api/clients', newClient);
       message.success('Cliente creado con éxito');
       setNewClient({
         name: '',

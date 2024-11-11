@@ -14,7 +14,7 @@ root.render(
     domain={domain}
     clientId={clientId}
     authorizationParams={{
-      redirect_uri: window.location.origin + '/callback',
+      redirect_uri: window.location.origin,
     }}
   >
     <App />
