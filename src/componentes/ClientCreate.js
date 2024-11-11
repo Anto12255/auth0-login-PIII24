@@ -7,7 +7,7 @@ const { Content } = Layout;
 const ClientCreate = () => {
   const onFinish = async (values) => {
     try {
-      await axios.post('http://localhost:5000/api/clients', values);
+      await axios.post('https://backend-clientes-piii-24-zeta.vercel.app//api/clients', values);
       message.success('Cliente creado con éxito');
     } catch (error) {
       message.error('Error al crear el cliente');

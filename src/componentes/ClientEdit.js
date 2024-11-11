@@ -14,7 +14,7 @@ const ClientEdit = () => {
   useEffect(() => {
     const fetchClient = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/clients/${id}`);
+        const response = await axios.get(`https://backend-clientes-piii-24-zeta.vercel.app//api/clients/${id}`);
         setClient(response.data);
         setLoading(false);
       } catch (error) {
